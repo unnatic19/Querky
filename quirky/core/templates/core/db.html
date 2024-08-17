@@ -1,0 +1,89 @@
+{% extends 'core/landing.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+
+            <div class="form-container bg-dark p-5 rounded mt-4">
+                <h2 class="text-center mb-4 gradient-text">Upload Passkey JSON File</h2>
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <div class="form-group text-center">
+                        <button type="submit" class="btn btn-primary">Upload</button>
+                    </div>
+                    {% if error %}
+                        <p class="text-danger text-center">{{ error }}</p>
+                    {% endif %}
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .gradient-text {
+        background-image: linear-gradient(to right, #e0d4ef, #00a1ec);
+        -webkit-background-clip: text;
+        color: transparent;
+    }
+
+    .form-container {
+        background-color: rgba(0, 0, 0, 0.75);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-control {
+        background-color: #1b1b1b;
+        color: #fff;
+        border: 1px solid #333;
+        border-radius: 0.5rem;
+    }
+
+    .form-control:focus {
+        background-color: #1b1b1b;
+        color: #fff;
+        border: 1px solid #555;
+        outline: none;
+        box-shadow: none;
+    }
+
+    .form-control::placeholder {
+        color: #aaa;
+    }
+
+    .form-group.text-center {
+        display: flex;
+        justify-content: center;
+    }
+
+    .btn-primary {
+        background-color: #00a1ec;
+        border: none;
+        border-radius: 0.5rem;
+    }
+
+    .btn-primary:hover {
+        background-color: #008ecc;
+    }
+
+    .btn-secondary {
+        background-color: #444;
+        border: none;
+        border-radius: 0.5rem;
+    }
+
+    .btn-secondary:hover {
+        background-color: #333;
+    }
+
+    .text-info {
+        color: #00a1ec !important;
+    }
+
+    .text-danger {
+        color: #e3342f !important;
+    }
+</style>
+{% endblock %}

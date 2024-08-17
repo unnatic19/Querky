@@ -1,0 +1,99 @@
+{% extends 'core/landing.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="form-container bg-dark p-5 rounded">
+                <h2 class="text-center mb-4 gradient-text">Welcome</h2>
+                <form method="post" action = "." >
+                    {% csrf_token %}
+                   
+                        <div class="form-group">
+                            <label for="first-name" class="text-muted">Username</label>
+                            <input type="text" class="form-control" name="username" id="first-name" placeholder="Username" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'">
+                        </div>
+            
+                    
+                    <div class="form-group">
+                        <label for="password" class="text-muted">Password</label>
+                        <input type="password" class="form-control" name="password" id="password" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'">
+                    </div>
+                    
+                    {% if form.errors %}
+                        {% for field in form %}
+                            {% for error in field.errors %}
+                                <p class="text-danger">{{ error| escape }}</p>
+                            {% endfor %}
+                        {% endfor %}
+                    {% endif %}
+
+
+                        <div class="form-group text-center">
+                            <button type="submit" class="btn btn-primary">Log In</button>
+                        </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .gradient-text {
+        background-image: linear-gradient(to right, #e0d4ef, #00a1ec);
+        -webkit-background-clip: text;
+        color: transparent;
+    }
+
+    .form-container {
+        background-color: rgba(0, 0, 0, 0.75);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-control {
+        background-color: #1b1b1b;
+        color: #fff;
+        border: 1px solid #333;
+        border-radius: 0.5rem;
+    }
+
+    .form-control:focus {
+        background-color: #1b1b1b;
+        color: #fff;
+        border: 1px solid #555;
+        outline: none;
+        box-shadow: none;
+    }
+
+    .form-control::placeholder {
+        color: #aaa;
+    }
+    .form-group.text-center {
+    display: flex;
+    justify-content: center;
+}
+    .btn-primary {
+        background-color: #00a1ec;
+        border: none;
+        border-radius: 0.5rem;
+    }
+
+    .btn-primary:hover {
+        background-color:#00a1ec;
+    }
+
+    .btn-secondary {
+        background-color: #444;
+        border: none;
+        border-radius: 0.5rem;
+    }
+
+    .btn-secondary:hover {
+        background-color: #333;
+    }
+
+    .text-info {
+        color: #00a1ec !important;
+    }
+</style>
+{% endblock %}

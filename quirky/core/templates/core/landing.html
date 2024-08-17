@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar Example</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    {% load static %}
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background: url('{% static "core/images/bg.avif" %}') no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            color: #fff;
+            position: relative;
+        }
+
+        /* Apply a blur effect to the background image */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: inherit;
+            filter: blur(30000px); /* Adjust the blur level here */
+            z-index: -1;
+        }
+
+        .navbar {
+            /* background-color: #000; Black header */
+            border-bottom: none;
+        }
+
+        .navbar-brand {
+            font-size: 29px;
+        }
+
+        .navbar-nav .nav-link {
+            padding: 0; /* Remove padding */
+            border-radius: 0; /* Remove border-radius */
+            background-image: linear-gradient(to right, #4169e1, transparent); /* Gradient from blue to transparent */
+            -webkit-background-clip: text; /* Clip the text to the gradient */
+            color: transparent; /* Make text transparent */
+            font-size: 22px;
+        }
+
+        .navbar-nav .nav-link:hover {
+            /* Example hover effect */
+            text-decoration: underline;
+        }
+
+        /* Colorful text for links */
+        .login-link {
+            background-image: linear-gradient(to right, #800080, transparent); /* Gradient from purple to transparent */
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark">
+  <a class="navbar-brand" href="/">Querky</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link login-link" href="/login/">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/signup/">Signup</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container mt-5">
+    {% block content %}{% endblock %}
+</div>
+
+<!-- Bootstrap JS (optional, for dropdowns, toggles, etc.) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
